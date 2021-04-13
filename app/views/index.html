@@ -1,1 +1,17 @@
-<h1>Hola {{user.nombre}}</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Tel</th>
+    </tr>
+    {% for row in users %}
+    <tr>
+        <td>{{ row.id }}</td>
+        <td>{{ row.nombre }}</td>
+        <td>{{ row.email }}</td>
+        <td>{{ row.celular }}</td>
+    </tr>
+    {% endfor %}
+
+</table>

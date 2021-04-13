@@ -6,8 +6,11 @@ class HomeController():
         pass
 
     def index(self):
-        user = {'nombre': 'Josue'}
-        return render_template('index.html', user=user)
+        """ user = {'nombre': 'Josue'}
+        return render_template('index.html', user=user) """
+        from app.models.User import User
+        users = User.query.all()
+        return render_template('index.html', users=users)
 
 
 homecontroller = HomeController()
