@@ -13,5 +13,5 @@ class User(db.Model):
         self.nombre = nombre
         self.email = email
         self.celular = celular
-db.create_all()
+
     
