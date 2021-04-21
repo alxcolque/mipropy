@@ -17,3 +17,6 @@ app.debug = True
 
 from app.routes.home_router import home_router
 app.register_blueprint(home_router)
+
+from app.routes.alumno_router import alumno_router
+app.register_blueprint(alumno_router)

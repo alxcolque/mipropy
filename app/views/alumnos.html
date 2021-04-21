@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="row">
+
+    <div class="col-md-5 container-fluid">
+        <div class="card mt-3 text-white bg-dark mb-3">
+            <div class="card-header">
+                Insertar Nuevo
+            </div>
+            <div class="card card-body">
+                <form action="crear_materia" method="POST">
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="text" name="materia" placeholder="Materia">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="text" name="sigla" placeholder="Sigla">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="text" name="descripcion" placeholder="Descripcion">
+                    </div>
+
+                    <button class="btn btn-primary form-control " type="submit">
+                        Registrar
+                    </button>
+                    
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Email</th>
+                <th scope="col">Celular</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in alumnos %}
+            <tr>
+                <th scope="row">{{ row.id}}</th>
+                <td>{{ row.nombres }}</td>
+                <td>{{ row.apellidos }}</td>
+                <td>{{ row.email }}</td>
+                <td>{{ row.celular }}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+
+
+{% endblock %}
