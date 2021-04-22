@@ -1,9 +1,9 @@
 __version__ = "0.1"
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import secrets
 
 app = Flask('app')
-app.config['SECRET_KEY'] = 'random'
 
 app = Flask(__name__, template_folder="views")
 
@@ -12,6 +12,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root@localhost/dbmiprop
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 
 db = SQLAlchemy(app)
+
+secret = secrets.token_urlsafe(32)
+app.config['SECRET_KEY'] = secret
 
 app.debug = True
 
