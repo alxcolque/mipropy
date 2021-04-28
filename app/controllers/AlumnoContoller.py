@@ -30,8 +30,30 @@ class AlumnoController():
         alumno = Alumno.query.get(_id)
         db.session.delete(alumno)
         db.session.commit()
-        flash('Eimnacion exitosa')
+        flash('Eliminación exitosa')
         return redirect(url_for('alumno_router.alumnos'))
+    def editarAlumno(self, _id):
+        from app.models.Alumno import Alumno
+        alumno = Alumno.query.get(_id)
+        return render_template('editar.html', title='Editar', alumno = alumno)
 
+    def actualizarAlumno(self, _id):
+        if request.method == 'POST':
+            nombres = request.form['nombres']
+            apellidos = request.form['apellidos']
+            email = request.form['email']
+            celular = request.form['celular']
+
+            from app.models.Alumno import Alumno
+            alumno = Alumno.query.get(_id)
+            alumno.nombres = nombres 
+            alumno.apellidos = apellidos
+            alumno.email = email 
+            alumno.celular = celular
+            
+            db.session.commit()
+
+            flash('Registro actualizado con exito')
+            return redirect(url_for('alumno_router.alumnos'))
 
 alumnocontroller = AlumnoController()

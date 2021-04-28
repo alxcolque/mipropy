@@ -15,3 +15,11 @@ def crear():
 @alumno_router.route('/eliminar/<string:id>')
 def eliminar(id):
     return alumnocontroller.eliminarAlumno(id)
+
+@alumno_router.route('/editar/<string:id>')
+def editar(id):
+    return alumnocontroller.editarAlumno(id)
+#Modificar registro
+@alumno_router.route('/actualizar/<id>',methods=['POST'])
+def actualizar(id):
+    return alumnocontroller.actualizarAlumno(id)

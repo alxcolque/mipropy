@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container mt-3">
+    <div class="row">
+
+        <div class="col-md-5 container-fluid">
+            <div class="card mt-3 text-white bg-dark mb-3">
+                <div class="card-header">
+                    {{title}}
+                </div>
+                <div class="card card-body">
+                    <form action="/actualizar/{{alumno.id}}" method="POST">
+                        <div class="input-group mb-3">
+                            <input class="form-control" type="text" value="{{alumno.nombres}}" name="nombres" placeholder="nombres">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input class="form-control" type="text" value="{{alumno.apellidos}}" name="apellidos" placeholder="apellidos">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input class="form-control" type="email" value="{{alumno.email}}" name="email" placeholder="email">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input class="form-control" type="text" value="{{alumno.celular}}" name="celular" placeholder="celular">
+                        </div>
+
+                        <button class="btn btn-primary form-control " type="submit">
+                            Registrar
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
