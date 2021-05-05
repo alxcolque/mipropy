@@ -10,7 +10,7 @@ class HomeController():
         return render_template('index.html', user=user) """
         from app.models.User import User
         users = User.query.all()
-        return render_template('index.html', users=users)
+        return render_template('materias/index.html', users=users)
 
 
 homecontroller = HomeController()

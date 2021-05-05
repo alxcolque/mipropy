@@ -72,8 +72,8 @@
                         <td>{{ row.celular }}</td>
                         <td>
 
-                            <a href="/editar/{{row.id}}" class="btn btn-warning btn-sm">Editar</a>
-                            <a href="/eliminar/{{row.id}}" onclick=" return confirm('¿Seguro desea eliminar este registro?')" class="btn btn-danger btn-delete btn-sm">Eliminar</a>
+                            <a href="/editar/{{row.id}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                            <a href="/eliminar/{{row.id}}" onclick=" return confirm('¿Seguro desea eliminar este registro?')" class="btn btn-danger btn-delete btn-sm"><i class="fa fa-times"></i></a>
                         </td>
                     </tr>
                     {% endfor %}
@@ -85,9 +85,146 @@
 
 
     </div>
+    <div class="row">
+        <div class="col-md-12">
+
+          <div class="card card-danger">
+            <div class="card-header">
+              <h3 class="card-title">Input masks</h3>
+            </div>
+            <div class="card-body">
+              <!-- Date dd/mm/yyyy -->
+              <div class="form-group">
+                <label>Date masks:</label>
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                  </div>
+                  <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric">
+                </div>
+                <!-- /.input group -->
+              </div>
+              <!-- /.form group -->
+
+              <!-- Date mm/dd/yyyy -->
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                  </div>
+                  <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="mm/dd/yyyy" data-mask="" inputmode="numeric">
+                </div>
+                <!-- /.input group -->
+              </div>
+              <!-- /.form group -->
+
+              <!-- phone mask -->
+              <div class="form-group">
+                <label>US phone mask:</label>
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                  </div>
+                  <input type="text" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="text">
+                </div>
+                <!-- /.input group -->
+              </div>
+              <!-- /.form group -->
+
+              <!-- phone mask -->
+              <div class="form-group">
+                <label>Intl US phone mask:</label>
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                  </div>
+                  <input type="text" class="form-control" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask="" inputmode="text">
+                </div>
+                <!-- /.input group -->
+              </div>
+              <!-- /.form group -->
+
+              <!-- IP mask -->
+              <div class="form-group">
+                <label>IP mask:</label>
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-laptop"></i></span>
+                  </div>
+                  <input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask="" inputmode="numeric">
+                </div>
+                <!-- /.input group -->
+              </div>
+              <!-- /.form group -->
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+          <div class="card card-info">
+            <div class="card-header">
+              <h3 class="card-title">Color &amp; Time Picker</h3>
+            </div>
+            <div class="card-body">
+              <!-- Color Picker -->
+              <div class="form-group">
+                <label>Color picker:</label>
+                <input type="text" class="form-control my-colorpicker1 colorpicker-element" data-colorpicker-id="1" data-original-title="" title="">
+              </div>
+              <!-- /.form group -->
+
+              <!-- Color Picker -->
+              <div class="form-group">
+                <label>Color picker with addon:</label>
+
+                <div class="input-group my-colorpicker2 colorpicker-element" data-colorpicker-id="2">
+                  <input type="text" class="form-control" data-original-title="" title="">
+
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-square"></i></span>
+                  </div>
+                </div>
+                <!-- /.input group -->
+              </div>
+              <!-- /.form group -->
+
+              <!-- time Picker -->
+              <div class="bootstrap-timepicker">
+                <div class="form-group">
+                  <label>Time picker:</label>
+
+                  <div class="input-group date" id="timepicker" data-target-input="nearest">
+                    <input type="text" class="form-control datetimepicker-input" data-target="#timepicker">
+                    <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="far fa-clock"></i></div>
+                    </div>
+                    </div>
+                  <!-- /.input group -->
+                </div>
+                <!-- /.form group -->
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col (left) -->
+        
+        <!-- /.col (right) -->
+      </div>
 
 
 </div>
 
 
+{% endblock %}
+
+{% block scripts%}
+     
 {% endblock %}
