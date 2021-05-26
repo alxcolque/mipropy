@@ -1,6 +1,4 @@
 from flask import render_template
-
-
 class HomeController():
     def __init__(self):
         pass

@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'layouts/layout.html' %}
 
 {% block body %}
 
@@ -118,49 +118,77 @@
 <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
 
 <script>
+
   $(document).ready(function () {
-    $('#myTable').DataTable({
-      processing: true,
-      //serverSide: true,
-      responsive: true,
-      autoWidth: false,
-      order: [
-        [0, 'desc']
-      ],
-      
-      "language": {
-        "lengthMenu": "Mostrar " +
-          '<select class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="-1">All</option></select>' +
-          " registros por página",
-        "zeroRecords": "No existe registros - discupa",
-        "info": "Mostrando la pagina _PAGE_ de _PAGES_",
-        "infoEmpty": "No records available",
-        "infoFiltered": "(filtrado de _MAX_ registros totales)",
-        "search": "Escriba lo que desea buscar:",
-        "paginate": {
-          "next": "Siguiente",
-          "previous": "Anterior"
-        }
-      },
-      dom: 'Bfrtip',
+      var table = $('#myTable').DataTable({
+          processing: true,
+          //serverSide: true,
+          responsive: true,
+          autoWidth: false,
+          destroy: true,
+          /* order: [
+              [0, 'desc']
+          ], */
+          "language": {
+              "lengthMenu": "Mostrar " +
+                  '<select class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="-1">All</option></select>' +
+                  " registros por página",
+              "zeroRecords": "No existe registros - discupa",
+              "info": "Mostrando la pagina _PAGE_ de _PAGES_",
+              "infoEmpty": "No records available",
+              "infoFiltered": "(filtrado de _MAX_ registros totales)",
+              "search": "Buscar:",
+              "paginate": {
+                  "next": "Siguiente",
+                  "previous": "Anterior"
+              }
+          },
+      });
+      new $.fn.dataTable.Buttons(table, {
           buttons: [{
-            
-            extend: 'pdf',
-            title: 'Customized PDF Title',
-            filename: 'customized_pdf_file_name'
-          }, {
-            extend: 'excel',
-            title: 'Customized EXCEL Title',
-            filename: 'customized_excel_file_name'
-          }, {
+              extend: 'pdfHtml5',
+              text: 'Abrir en PDF',
+              download: 'open',
+              className: 'btn-danger',
+              messageTop: 'alumnos',
+              title: 'Alumnos',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              exportOptions: {
+                  columns: [0, 2, 3, 4, 5]
+              },
+              customize: function (doc) {
+                  doc.styles.title = {
+                      color: 'red',
+                      fontSize: '40',
+                      alignment: 'center'
+                  }
+                  doc.styles['td:nth-child(2)'] = {
+                      width: '100px',
+                      'max-width': '100px'
+                  }
+              }
+          },
+          {
+              extend: 'excel',
+              title: 'Informacion en EXCEL',
+              filename: 'Alumnos'
+          }
+          , {
             extend: 'csv',
-            filename: 'customized_csv_file_name'
-          }],
+            filename: 'Alumnos'
+          }
+          ],
+          
 
+      });
 
-    });
+      table.buttons(0, null).container().appendTo(
+          table.table().container()
+      );
   });
 </script>
+
 
 {% endblock %}
 <!-- Fin bloque scripts -->

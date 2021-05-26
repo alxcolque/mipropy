@@ -18,6 +18,9 @@ app.config['SECRET_KEY'] = secret
 
 app.debug = True
 
+from app.routes.principal_router import principal_router
+app.register_blueprint(principal_router)
+
 from app.routes.home_router import home_router
 app.register_blueprint(home_router)
 

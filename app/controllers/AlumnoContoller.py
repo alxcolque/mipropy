@@ -8,7 +8,7 @@ class AlumnoController():
     def index(self):
         from app.models.Alumno import Alumno
         alumnos = Alumno.query.all()
-        return render_template('alumnos.html', alumnos=alumnos)
+        return render_template('alumnos/alumnos.html', alumnos=alumnos)
     
     def crearAlumno(self):
         if request.method == 'POST':
@@ -35,7 +35,7 @@ class AlumnoController():
     def editarAlumno(self, _id):
         from app.models.Alumno import Alumno
         alumno = Alumno.query.get(_id)
-        return render_template('editar.html', title='Editar', alumno = alumno)
+        return render_template('alumnos/editar.html', title='Editar', alumno = alumno)
 
     def actualizarAlumno(self, _id):
         if request.method == 'POST':
