@@ -1,0 +1,114 @@
+{% extends 'layouts/layout.html' %}
+{% block body %}
+
+<div class="card">
+
+    <div class="card-body mt-5">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Hey!</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        {% endfor%}
+        {% endif %}
+        {% endwith%}
+
+        <form class="form-horizontal" method="POST" action="/guardar_carrusel" enctype="multipart/form-data">
+            <!-- method="post" action="/" enctype="multipart/form-data" -->
+            <div class="row bg-light text-dark">
+
+                <div class="col-md-6 mt-2">
+                    <div class="form-group">
+                        <label for="titulo">Título</label>
+                        <input class="form-control" placeholder="Ingrese el titulo del carrusel" name="title"
+                            type="text" id="title" required onkeyup="this.value = this.value.toUpperCase();">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea class="form-control" rows="3" placeholder="Descripcion breve" id="description"
+                            name="description" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Imagen">Nombre Imagen</label>
+                        <input class="form-control" placeholder="Nombre de la imagen" name="image" id="image" readonly
+                            required>
+                    </div>
+
+                </div>
+                <div class="col-md-6 mt-2">
+                    <div class="card bg-light text-dark">
+
+                        <div class="card-header bg-light text-dark">
+                            Ajustar imagen
+                        </div>
+                        <div class="card-body">
+                            <input type="file" name="file" id="file" accept="image/*" required />
+                            <img id="preview" class="profile-user-img img-fluid"
+                                src="https://images.unsplash.com/photo-1542261777448-23d2a287091c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTR8fHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60"
+                                alt="carrusel">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-dark">
+                <div class="container-fluid h-100 mt-2">
+                    <div class="row w-100 align-items-center">
+
+                        <div class="form-group ">
+                            <div class="">
+                                <button type="submit" class="btn btn-success ">Registrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        </br>
+        <div id="output"></div>
+    </div>
+
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+<!-- Fin contenido -->
+
+{% endblock %}
+<!-- Estilos CSS -->
+{% block css%}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
+<!-- Java Scripts -->
+{% block js%}
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    var date = $("#mydate").datepicker({
+        dateFormat: 'yy-mm-dd',
+    }).val();
+
+    function init() {
+        var inputFile = document.getElementById('file');
+        inputFile.addEventListener('change', mostrarImagen, false);
+    }
+
+    function mostrarImagen(event) {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function (event) {
+            var img = document.getElementById('preview');
+            img.src = event.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+
+    window.addEventListener('load', init, false);
+</script>
+
+{% endblock %}

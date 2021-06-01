@@ -3,13 +3,18 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import secrets
 
-app = Flask('app')
+UPLOAD_FOLDER = 'app/static/uploads/'
+#app = Flask('app')
 
 app = Flask(__name__, template_folder="views")
 
 #configuraciones base de datos
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root@localhost/dbmipropy"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+
 
 db = SQLAlchemy(app)
 
@@ -32,3 +37,6 @@ app.register_blueprint(materia_router)
 
 from app.routes.practica_router import practica_router
 app.register_blueprint(practica_router)
+
+from app.routes.carrusel_router import carrusel_router
+app.register_blueprint(carrusel_router)

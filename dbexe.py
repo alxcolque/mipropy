@@ -3,6 +3,8 @@ from app.models.Alumno import Alumno
 from app.models.Materia import Materia
 from app.models.Clase import Clase
 from app.models.Practica import Practica
+from app.models.Carrusel import Carrusel
+
 from app import db
 
 db.drop_all()
