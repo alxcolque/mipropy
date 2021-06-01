@@ -7,7 +7,8 @@ class Materia(db.Model):
     nombre = db.Column(db.String(50))
     sigla = db.Column(db.String(50))
     # Referencia de relacion con modelos externos
-    clases = db.relationship(
-        'Clases', backref='materia', lazy=True, cascade="all, delete")
     practicas = db.relationship(
-        'Practicas', backref='practica', lazy=True, cascade="all, delete")
+        'Practica', backref='materia', lazy='dynamic')
+    clases = db.relationship(
+        'Clase', backref='materia', lazy='dynamic')
+
