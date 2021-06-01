@@ -20,4 +20,4 @@ class Practica(db.Model):
     # Atributo o la clave foranea
     materia_id = db.Column(db.Integer, db.ForeignKey(
         'materias.id'), nullable=False)
-
+    alumno = db.relationship("Entregapracticas")

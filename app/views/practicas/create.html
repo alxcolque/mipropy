@@ -1,0 +1,74 @@
+{% extends 'layouts/layout.html' %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <h3>{{title}}</h3>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Hey!</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        {% endfor%}
+        {% endif %}
+        {% endwith%}
+
+        <div class="col-md-5 container-fluid">
+            <div class="card mt-3 text-white bg-dark mb-3">
+                <div class="card-header">
+                    Insertar Nuevo
+                </div>
+                <div class="card-body">
+                    <form action="guardarp" method="POST">
+                        <div class="input-group mb-3">
+                            <input class="form-control" type="text" name="nombre" placeholder="Materia" required
+                                onkeyup="this.value = this.value.toUpperCase();">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input class="form-control" type="text" name="descripcion" placeholder="descripcion">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" name="fecha" id="mydate" class="form-control" placeholder="Fecha"
+                                required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <select class="form-select" name="materia_id" aria-label="Default select example">
+                                <option selected>Seleccione una materia</option>
+
+                                {% for row in materias %}
+                                <option value="{{row.id}}">{{row.nombre}}</option>
+                                {% endfor%}
+                            </select>
+                        </div>
+
+                        <button class="btn btn-primary form-control " type="submit">
+                            Registrar
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+<!-- Estilos CSS -->
+{% block css%}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
+<!-- Java Scripts -->
+{% block js%}
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    var date = $("#mydate").datepicker({
+        dateFormat: 'yy-mm-dd',
+    }).val();
+</script>
+{% endblock %}

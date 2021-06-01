@@ -29,3 +29,6 @@ app.register_blueprint(alumno_router)
 
 from app.routes.materia_router import materia_router
 app.register_blueprint(materia_router)
+
+from app.routes.practica_router import practica_router
+app.register_blueprint(practica_router)

@@ -1,0 +1,67 @@
+{% extends 'layouts/layout.html' %}
+
+{% block body %}
+<div class="row">
+    <h3>{{title}}</h3>
+
+    <div class="col-md-5 container-fluid">
+        <div class="card mt-3 text-white bg-dark mb-3">
+            <div class="card-header">
+                Insertar Nuevo
+            </div>
+            <div class="card-body">
+                <form action="/practicas/actualizarpractica/{{practica.id}}" method="POST">
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="text" value="{{practica.nombre}}" name="nombre" placeholder="Nombre" required onkeyup="this.value = this.value.toUpperCase();">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="text" value="{{practica.descripcion}}"  name="descripcion" placeholder="Descipcion" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="text" value="{{practica.fecha}}" name="fecha" id="mydate" placeholder="Fecha"
+                            required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <select class="form-select" id="sel_id" aria-label="Default select example">
+                            <option selected>Seleccione una materia</option>
+                            {% for row in materias %}
+                            <option value="{{row.id}}">{{row.nombre}}</option>
+                            {% endfor%}
+                        </select>
+                    </div>
+
+                    <input type="text" name="materia_id" id="materia_id" value="{{practica.materia_id}}" required> <!-- hidden -->
+
+                    <button class="btn btn-primary form-control " type="submit">
+                        Registrar
+                    </button>
+                    
+                </form>
+            </div>
+        </div>
+    
+    </div>
+    
+
+</div>
+
+{% endblock %}
+<!-- Estilos CSS -->
+{% block css%}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
+<!-- Java Scripts -->
+{% block js%}
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    var date = $("#mydate").datepicker({
+        dateFormat: 'yy-mm-dd',
+    }).val();
+
+    $("#sel_id").change(function(){
+      var estado = $("#sel_id").val();
+      $("#materia_id").val(estado);
+    });
+</script>
+{% endblock %}
