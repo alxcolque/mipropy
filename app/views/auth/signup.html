@@ -1,0 +1,95 @@
+{% extends 'layouts/layout.html' %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Hey!</strong> {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+{% endfor%}
+{% endif %}
+{% endwith%}
+
+<div class="col-5">
+    <form action="register" method="POST">
+        <img class="mb-4"
+            src="https://th.bing.com/th/id/R99f75aa53e6a76415790d30ecf952a11?rik=4j8%2fy%2fb%2bOzrPNg&pid=ImgRaw" alt=""
+            width="72" height="57">
+        <h1 class="h3 mb-3 fw-normal">Registrar</h1>
+        <div class="form-floating">
+            <input type="text" name="nombre" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Nombre</label>
+        </div>
+        <div class="form-floating">
+            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Registrar</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+    </form>
+</div>
+
+
+{% endblock %}
+<!-- Estilos CSS -->
+{% block css%}
+<style>
+    /* html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+    }
+
+    .form-signin {
+        width: 100%;
+        max-width: 330px;
+        padding: 15px;
+        margin: auto;
+    }
+
+    .form-signin .checkbox {
+        font-weight: 400;
+    }
+
+    .form-signin .form-floating:focus-within {
+        z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    } */
+</style>
+{% endblock %}
+<!-- Java Scripts -->
+{% block js%}
+
+{% endblock %}
