@@ -10,10 +10,10 @@ class User(db.Model):
     password = db.Column(db.String(200))
     celular = db.Column(db.String(50))
 
-    def __init__(self, nombre, email, celular):
+    """ def __init__(self, nombre, email, celular):
         self.nombre = nombre
         self.email = email
-        self.celular = celular
+        self.celular = celular """
         
 
     

@@ -1,4 +1,4 @@
-from app import db
+from app import db, bcrypt
 from flask import render_template, request, redirect, url_for, flash, session
 from app.models.User import User
 
@@ -26,13 +26,13 @@ class AuthController():
         if request.method == 'POST':
             nombre = request.form['nombre']
             email = request.form['email']
-            password = request.form['password']
+            password = bcrypt.generate_password_hash(request.form['password'])
             
             user = User(nombre=nombre, email=email, password=password)
             db.session.add(user)
             db.session.commit()
             flash('Usuario registrado exitosamente')
-            return redirect(url_for('user_router.alumnos'))
+            return redirect(url_for('alumno_router.alumnos'))
     
 
 authcontroller = AuthController()
